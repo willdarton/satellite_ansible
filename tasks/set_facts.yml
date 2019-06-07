@@ -1,0 +1,5 @@
+---
+- name: "Set remote_manifest fact"
+  set_fact:
+    "satellite_deployment_remote_manifest": "{{
+      'http://' in satellite_deployment_manifest_path }}"
