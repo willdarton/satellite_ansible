@@ -2,7 +2,7 @@
 # Copy the Katello answer file
 - name: "Install and configure | katello answer file copy"
   template:
-    src: "answerfile.katello-installer_6.5.yaml.j2"
+    src: "answerfile.sat6_5-installer.yaml.j2"
     dest: "/etc/foreman-installer/scenarios.d/satellite-answers.yaml"
   tags:
     - "install_satellite"

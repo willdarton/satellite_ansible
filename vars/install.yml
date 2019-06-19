@@ -1,0 +1,15 @@
+---
+satellite_deployment_packages:
+  "6.5":
+    - "satellite"
+    - "satellite-capsule"
+
+satellite_deployment_extra_packages:
+  - "wget"
+  - "git"
+  - "net-tools"
+  - "bash-completion"
+  - "screen"
+  - "vim-*"
+
+satellite_configure_capsule: true
