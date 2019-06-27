@@ -1,19 +1,19 @@
 ---
 #Registering system with RHN.
-- name: "RHN | registering system with RHN"
-  redhat_subscription:
-    state: "present"
-    username: "{{ satellite_deployment_rhn_user }}"
-    password: "{{ satellite_deployment_rhn_password }}"
-    consumer_name: "{{ satellite_deployment_hostname_full }}"
-  tags:
-    - "rhn"
-    - "skip_ansible_lint" # ANSIBLE0012
+#- name: "RHN | registering system with RHN"
+#  redhat_subscription:
+#    state: "present"
+#    username: "{{ satellite_deployment_rhn_user }}"
+#    password: "{{ satellite_deployment_rhn_password }}"
+#    consumer_name: "{{ satellite_deployment_hostname_full }}"
+#  tags:
+#    - "rhn"
+#    - "skip_ansible_lint" # ANSIBLE0012
 
 
 - name: "Check if Satellite is subscribed"
   shell: "/usr/sbin/subscription-manager list --consumed
-    --matches='Satellite*' | awk '/Pool ID/ {print $3}'"
+    --matches='Red Hat Satellite*' | awk '/Pool ID/ {print $3}'"
   tags:
     - "rhn"
     - "skip_ansible_lint" # ANSIBLE0012
@@ -22,7 +22,7 @@
 #Get the pool id for the pool that contains the Satellite product
 - name: "RHN | get RHN pool id"
   shell: "/usr/sbin/subscription-manager list --all --available
-    --matches='Satellite*' | awk '/Pool ID/ {print $3}' | head -1"
+    --matches='Red Hat Satellite*' | awk '/Pool ID/ {print $3}' | head -1"
   tags:
     - "rhn"
   register: "satellite_deployment_pool_id_command"
