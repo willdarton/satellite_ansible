@@ -30,6 +30,16 @@ Inventory File
 
 The example of inventory file for this role is in  hosts.target.
 
+Defaults Main YML File
+----------------------
+
+Remember to put the correct Admin User and Admin Password
+Remember to comment out the RHN user and password if you are performing internal registration (line 18 and line 19)
+
+Answers Template File
+---------------------
+Remember to Put the correct admin username and admin password Line 98 and 99
+
 How to run the playbook
 ------------------------
 

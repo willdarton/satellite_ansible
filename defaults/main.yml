@@ -9,14 +9,14 @@
 satellite_deployment_version: 6.5
 satellite_deployment_hostname_short: "slvdcuvsat01"
 satellite_deployment_hostname_full: "slvdcuvsat01.nfcutest.net"
-satellite_deployment_admin_username: "nfcu_admin"
-satellite_deployment_admin_password: "Password1"
+satellite_deployment_admin_username: "<HIDING ACCOUNT NAME FOR NOW>"
+satellite_deployment_admin_password: "HIDING ACCOUNT PASSWORD FOR NOW"
 satellite_deployment_organization: "Enterprise_Unix_Engineering_Plano_Unit"
 satellite_deployment_location: "viennaLabPlano"
-# registration:
+# registration: Registration to the real world Red Hat Network 
 satellite_connected: "True"  ## True for connected / False for Disconnected
-satellite_deployment_rhn_user: "your_rhn_user"
-satellite_deployment_rhn_password: "your_rhn_pass"
+satellite_deployment_rhn_user: "your_rhn_user" ## Comment Out if Performing Internal Setup / NON Red Hat Registration
+satellite_deployment_rhn_password: "your_rhn_pass" ## Comment Out if Performing Internal Setup / NON Red Hat Registration
 
 # answers:
 # specify answers key: value without -- prefix. Keys you can get when you
@@ -31,8 +31,8 @@ satellite_deployment_answers:
   "foreman-admin-password": "{{ satellite_deployment_admin_password }}"
 
 # configure_satellite:
-satellite_deployment_manifest_path: "/home/ansible-root/NP/satellite_manifest.zip"
-satellite_deployment_manifest_dest_path: "/root/satellite_manifest.zip"
+satellite_deployment_manifest_path: "/tmp/satellite_manifest_eue_lab_620190626.zip"
+satellite_deployment_manifest_dest_path: "/root/satellite_manifest_eue_lab_620190626.zip"
 satellite_deployment_repositories:
   - { product_name: 'Red Hat Enterprise Linux Server', name_repo: 'Red Hat Enterprise Linux 7 Server (Kickstart)', rel: '7.6', architecture: 'x86_64', state: enable}
   - { product_name: 'Red Hat Enterprise Linux Server', name_repo: 'Red Hat Enterprise Linux 7 Server (Kickstart)', rel: '7Server', architecture: 'x86_64', state: enable}
@@ -88,8 +88,7 @@ satellite_deployment_fw_ports:
     - 69/udp
 
 
-satellite_deployment_installer_cmd: "/usr/sbin/satellite-installer
-  --scenario satellite"
+satellite_deployment_installer_cmd: "/usr/sbin/satellite-installer --scenario satellite"
 
 
 # IPA Enabled / Disabled
