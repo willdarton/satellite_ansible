@@ -7,14 +7,14 @@
   tags:
     - "install_satellite"
     - "update_satellite"
-  when: satellite_deployment_version is version_compare('6.5')
+#  when: satellite_deployment_version is version_compare('6.5')
 
 #Run the install of Satellite 6.5
 - name: "Satellite installation"
   command: "{{ satellite_deployment_installer_cmd }}"
   become: "yes"
-  when: foreman_service_file.stat.exists == True and
-    satellite_deployment_version is version_compare('6.4', '>=')
+#  when: foreman_service_file.stat.exists == True and
+#    satellite_deployment_version is version_compare('6.4', '>=')
   tags:
   - "install_satellite"
   - "update_satellite"

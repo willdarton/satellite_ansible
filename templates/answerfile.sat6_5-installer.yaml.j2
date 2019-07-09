@@ -2,7 +2,7 @@
 certs:
   log_dir: /var/log/certs
   node_fqdn: slvdcuvsat01.nfcutest.net
-  cname: []
+  cname: rhn-nslab.nfcutest.net
   generate: true
   regenerate: false
   regenerate_ca: false
@@ -95,8 +95,8 @@ foreman:
   passenger_prestart: true
   passenger_min_instances: 1
   passenger_start_timeout: 90
-  admin_username: nfcu_admin
-  admin_password: Password1
+  admin_username: <NEED to HAVE Correct Admin User> 
+  admin_password: <NEED to HAVE Correct ADMIN Password>
   admin_first_name:
   admin_last_name:
   admin_email:
@@ -131,7 +131,7 @@ foreman:
   telemetry_logger_enabled: false
   telemetry_logger_level: DEBUG
   dynflow_pool_size: 5
-  jobs_service:
+  jobs_service: dynflowd
   dynflow_in_core: true
   hsts_enabled: true
 foreman::cli:
@@ -547,11 +547,6 @@ puppet:
   server_reports: foreman
   server_implementation: puppetserver
   server_passenger: true
-  server_puppetserver_dir: /etc/puppetlabs/puppetserver
-  server_puppetserver_vardir: /opt/puppetlabs/server/data/puppetserver
-  server_puppetserver_rundir: /var/run/puppetlabs/puppetserver
-  server_puppetserver_logdir: /var/log/puppetlabs/puppetserver
-  server_puppetserver_version: 5.1.0
   server_service_fallback: true
   server_passenger_min_instances: 1
   server_passenger_pre_start: true
@@ -618,10 +613,6 @@ puppet:
   server_foreman_ssl_cert: /etc/pki/katello/puppet/puppet_client.crt
   server_foreman_ssl_key: /etc/pki/katello/puppet/puppet_client.key
   server_foreman_facts: true
-  server_puppet_basedir: /opt/puppetlabs/puppet/lib/ruby/vendor_ruby/puppet
-  server_puppetdb_host:
-  server_puppetdb_port: 8081
-  server_puppetdb_swf: false
   server_parser: current
   server_environment_timeout:
   server_jvm_java_bin: /usr/bin/java
@@ -640,8 +631,6 @@ puppet:
   server_environment_class_cache_enabled: false
   server_allow_header_cert_info: false
   server_web_idle_timeout: 30000
-  server_puppetserver_jruby9k: false
-  server_puppetserver_metrics: true
   server_metrics_jmx_enable: true
   server_metrics_graphite_enable: false
   server_metrics_graphite_host: 127.0.0.1
@@ -649,6 +638,4 @@ puppet:
   server_metrics_server_id: slvdcuvsat01.nfcutest.net
   server_metrics_graphite_interval: 5
   server_metrics_allowed:
-  server_puppetserver_experimental: true
-  server_puppetserver_trusted_agents: []
   server_compile_mode:

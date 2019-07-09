@@ -1,5 +1,5 @@
 ---
-Create Hammer directory on /root
+#Create Hammer directory on /root
 - name: "Configure | create .hammer directory on user"
   file:
     path: "~/.hammer"
@@ -27,14 +27,14 @@ Create Hammer directory on /root
     dest: "{{ satellite_deployment_manifest_dest_path }}"
   when: satellite_deployment_remote_manifest
 
-#Upload the manifest to the satellite
+#Upload the manifest to the satellite | Add Logic so that it will skip if manifest the same
 - name: "Configure | upload the manifest"
   become: "yes"
   shell: "hammer subscription upload --file
     {{ satellite_deployment_manifest_dest_path }} --organization
     {{ satellite_deployment_organization }}"
 
-#Enabling repos on satellite
+#Enabling repos on satellite | Maybe add Logic to skip if enabled already
 - name: "Configure | enable repos"
   become: "yes"
   shell: "hammer repository-set '{{ item.state }}' --organization

@@ -1,10 +1,11 @@
-
-sts: satellite-server
+---
+- hosts: satellite-server
+  connection: local
   become: True
   tasks:
-    - name: import_role for ansible-role-redhat_satellite6_installation 
+    - name: import_role for Satellite_6_Ansible_Installation_Playbook
       import_role: 
-        name: ../../ansible-role-redhat_satellite6_installation
+        name: ../../Satellite_6_Ansible_Installation_Playbook
 
   vars_files:
-    - "{{ satellite_deployment_vars }}"
+    - /home/39575/git/Satellite_6_Ansible_Installation_Playbook/defaults/main.yml
