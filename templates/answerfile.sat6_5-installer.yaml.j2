@@ -1,13 +1,13 @@
 ---
 certs:
   log_dir: /var/log/certs
-  node_fqdn: slvdcuvsat01.nfcutest.net
+  node_fqdn: <fqdn_of_satellite>
   cname: rhn-nslab.nfcutest.net
   generate: true
   regenerate: false
   regenerate_ca: false
   deploy: true
-  ca_common_name: slvdcuvsat01.nfcutest.net
+  ca_common_name: <fqdn_of_satellite>
   country: US
   state: North Carolina
   city: Raleigh
@@ -15,10 +15,10 @@ certs:
   org_unit: SomeOrgUnit
   expiration: '7300'
   ca_expiration: '36500'
-  server_cert: /root/ssl-temp/slvdcuvsat01/slvdcuvsat01.nfcutest.net.crt
-  server_key: /root/ssl-temp/slvdcuvsat01/slvdcuvsat01.nfcutest.net.key
+  server_cert: /root/ssl-temp/<shortname>/<fqdn_of_satellite>.crt
+  server_key: /root/ssl-temp/<shortname>/<fqdn_of_satellite>.key
   server_cert_req:
-  server_ca_cert: /root/ssl-temp/slvdcuvsat01/slvdcuvsat01.nfcutest.net.ca
+  server_ca_cert: /root/ssl-temp/<shortname>/<fqdn_of_satellite>.ca
   pki_dir: /etc/pki/katello
   ssl_build_dir: /root/ssl-build
   user: root
@@ -26,7 +26,7 @@ certs:
   default_ca_name: katello-default-ca
   server_ca_name: katello-server-ca
 foreman:
-  foreman_url: https://slvdcuvsat01.nfcutest.net
+  foreman_url: https://<fqdn_of_satellite>
   puppetrun: false
   unattended: true
   unattended_url:
@@ -36,7 +36,7 @@ foreman:
   passenger_ruby_package: tfm-rubygem-passenger-native
   plugin_prefix: tfm-rubygem-foreman_
   use_vhost: true
-  servername: slvdcuvsat01.nfcutest.net
+  servername: <fqdn_of_satellite>
   serveraliases:
   - foreman
   ssl: true
@@ -190,7 +190,7 @@ foreman_proxy:
   foreman_ssl_cert: /etc/foreman-proxy/foreman_ssl_cert.pem
   foreman_ssl_key: /etc/foreman-proxy/foreman_ssl_key.pem
   trusted_hosts:
-  - slvdcuvsat01.nfcutest.net
+  - <fqdn_of_satellite>
   ssl_disabled_ciphers: []
   tls_disabled_versions: []
   manage_sudoersd: true
@@ -218,15 +218,15 @@ foreman_proxy:
   puppetssh_wait: false
   salt_puppetrun_cmd: puppet.run
   puppet_user: root
-  puppet_url: https://slvdcuvsat01.nfcutest.net:8140
+  puppet_url: https://<fqdn_of_satellite>:8140
   puppet_ssl_ca: /etc/puppetlabs/puppet/ssl/certs/ca.pem
-  puppet_ssl_cert: /etc/puppetlabs/puppet/ssl/certs/slvdcuvsat01.nfcutest.net.pem
-  puppet_ssl_key: /etc/puppetlabs/puppet/ssl/private_keys/slvdcuvsat01.nfcutest.net.pem
+  puppet_ssl_cert: /etc/puppetlabs/puppet/ssl/certs/<fqdn_of_satellite>.pem
+  puppet_ssl_key: /etc/puppetlabs/puppet/ssl/private_keys/<fqdn_of_satellite>.pem
   puppet_use_environment_api:
   puppet_api_timeout: 30
   templates: false
   templates_listen_on: both
-  template_url: http://slvdcuvsat01.nfcutest.net:8000
+  template_url: http://<fqdn_of_satellite>:8000
   logs: true
   logs_listen_on: https
   tftp: true
@@ -255,7 +255,7 @@ foreman_proxy:
   dhcp_provider: isc
   dhcp_subnets: []
   dhcp_option_domain:
-  - nfcutest.net
+  - <dhcp_domain_name>
   dhcp_search_domains:
   dhcp_interface: ens192
   dhcp_additional_interfaces: []
@@ -274,7 +274,7 @@ foreman_proxy:
   dhcp_omapi_port: 7911
   dhcp_peer_address:
   dhcp_node_type: standalone
-  dhcp_failover_address: 172.26.196.179
+  dhcp_failover_address: <dhcp_failover_address"
   dhcp_failover_port: 519
   dhcp_max_response_delay: 30
   dhcp_max_unacked_updates: 10
@@ -287,12 +287,12 @@ foreman_proxy:
   dns_managed: false
   dns_provider: nsupdate
   dns_interface: ens192
-  dns_zone: nfcutest.net
+  dns_zone: <dns_domain_zone>
   dns_reverse:
   dns_server: 127.0.0.1
   dns_ttl: 86400
   dns_tsig_keytab: /etc/foreman-proxy/dns.keytab
-  dns_tsig_principal: foremanproxy/slvdcuvsat01.nfcutest.net@NFCUTEST.NET
+  dns_tsig_principal: foremanproxy/<fqdn_of_satellite>@DOMAIN_NAME
   dns_forwarders: []
   libvirt_network: default
   libvirt_connection: qemu:///system
@@ -308,15 +308,15 @@ foreman_proxy:
   freeipa_remove_dns: true
   keyfile: /etc/rndc.key
   register_in_foreman: true
-  foreman_base_url: https://slvdcuvsat01.nfcutest.net
-  registered_name: slvdcuvsat01.nfcutest.net
+  foreman_base_url: https://<fqdn_of_satellite>
+  registered_name: <fqdn_of_satellite>
   registered_proxy_url:
   oauth_effective_user: admin
   oauth_consumer_key: ytxmbDWf96U4AqapYKss9fFEaSPWV2jz
   oauth_consumer_secret: 4VyC6mAeHKopzAVJ8uXi3fL28fe4kP4G
   puppet_use_cache:
 foreman_proxy_content:
-  parent_fqdn: slvdcuvsat01.nfcutest.net
+  parent_fqdn: <fqdn_of_satellite>
   certs_tar:
   pulp_master: true
   pulp_admin_password: XqYGLARKQ862YrPfgbJkYcVSCM3uRzz9
@@ -383,7 +383,7 @@ foreman_proxy::plugin::pulp:
   pulpnode_enabled: false
   version:
   group:
-  pulp_url: https://slvdcuvsat01.nfcutest.net/pulp
+  pulp_url: https://<fqdn_of_satellite>/pulp
   pulp_dir: /var/lib/pulp
   pulp_content_dir: /var/lib/pulp/content
   puppet_content_dir: /etc/puppetlabs/code/environments
@@ -415,10 +415,10 @@ katello:
   num_pulp_workers: 8
   pulp_worker_timeout: 60
   max_tasks_per_pulp_worker: 2
-  proxy_url: http://binnacle.nfcu.net
-  proxy_port: 8080
-  proxy_username: rhn_sat_svc
-  proxy_password: ccIuzA4oXXb-kGQ
+  proxy_url: <proxy_url>
+  proxy_port: <proxy_port>
+  proxy_username: <proxy_username>
+  proxy_password: <proxy_password>
   pulp_max_speed:
   cdn_ssl_version:
   package_names:
@@ -518,7 +518,7 @@ puppet:
   agent: true
   remove_lock: true
   report: true
-  client_certname: slvdcuvsat01.nfcutest.net
+  client_certname: <fqdn_of_satellite>
   puppetmaster:
   systemd_unit_name: puppet-run
   service_name: puppet
@@ -527,7 +527,7 @@ puppet:
   server: true
   server_admin_api_whitelist:
   - localhost
-  - slvdcuvsat01.nfcutest.net
+  - <fqdn_of_satellite>
   server_manage_user: true
   server_user: puppet
   server_group: puppet
@@ -540,7 +540,7 @@ puppet:
   server_ca_auth_required: true
   server_ca_client_whitelist:
   - localhost
-  - slvdcuvsat01.nfcutest.net
+  - <fqdn_of_satellite>
   server_http: false
   server_http_port: 8139
   server_http_allow: []
@@ -599,7 +599,7 @@ puppet:
   server_ssl_chain_filepath: /etc/puppetlabs/puppet/ssl/ca/ca_crt.pem
   server_package:
   server_version:
-  server_certname: slvdcuvsat01.nfcutest.net
+  server_certname: <fqdn_of_satellite>
   server_enc_api: v2
   server_report_api: v2
   server_request_timeout: 60
@@ -608,7 +608,7 @@ puppet:
   server_additional_settings: {}
   server_rack_arguments: []
   server_foreman: true
-  server_foreman_url: https://slvdcuvsat01.nfcutest.net
+  server_foreman_url: https://<fqdn_of_satellite>
   server_foreman_ssl_ca: /etc/pki/katello/puppet/puppet_client_ca.crt
   server_foreman_ssl_cert: /etc/pki/katello/puppet/puppet_client.crt
   server_foreman_ssl_key: /etc/pki/katello/puppet/puppet_client.key
@@ -635,7 +635,7 @@ puppet:
   server_metrics_graphite_enable: false
   server_metrics_graphite_host: 127.0.0.1
   server_metrics_graphite_port: 2003
-  server_metrics_server_id: slvdcuvsat01.nfcutest.net
+  server_metrics_server_id: <fqdn_of_satellite>
   server_metrics_graphite_interval: 5
   server_metrics_allowed:
   server_compile_mode:

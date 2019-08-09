@@ -1,2 +1,2 @@
 [satellite-server]
-slvdcuvsat01.nfcutest.net ansible_connection=local
+<satellite fqdn> ansible_connection=local
